@@ -7,7 +7,7 @@ method=$2
 iters=$3
 lmbda=$4
 patchsz=$5
-numscales=$6
+num_scales=$6
 coarsest_scale_factor=$7
 confidence_decay=$8
 confidence_asymptotic=$9 
@@ -26,5 +26,5 @@ if [ -f "$input_mask" ]; then
    echo "merging input mask with the drawn one"
 fi
 
-$binfolder/Inpainting -method $method -iters $iters -lambda $lmbda -patch $patchsz -scales $numscales -coarse $coarsest_scale_factor -conft $confidence_decay -confa $confidence_asymptotic -init $initialization_type -shownnf $offsets -showpyr $pyr   $input $mask $output 
+$binfolder/Inpainting -method $method -iters $iters -lambda $lmbda -patch $patchsz -scales $num_scales -coarse $coarsest_scale_factor -conft $confidence_decay -confa $confidence_asymptotic -init $initialization_type -shownnf $offsets -showpyr $pyr   $input $mask $output 
 
