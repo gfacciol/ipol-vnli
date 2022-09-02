@@ -22,7 +22,7 @@ input_mask=${16}
 # merge the painted and the input mask
 
 if [ -f "$input_mask" ]; then
-   python3 $binfolder/merge_mask $mask $input_mask $mask
+   python3 $binfolder/merge_mask.py $mask $input_mask $mask
    echo "merging input mask with the drawn one"
 fi
 
