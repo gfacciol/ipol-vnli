@@ -26,4 +26,7 @@ def merge_mask(input_2_path,mask_d_path,mask_path):
     mask = Image.fromarray(np.uint8(mask))
     mask.save(mask_path)
 
-merge_mask('input_2.png','mask_d.png','mask.png')
+
+import sys
+if __name__ == '__main__':
+    merge_mask(sys.argv[1], sys.argv[2], sys.argv[3])
