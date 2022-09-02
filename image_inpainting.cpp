@@ -1,7 +1,7 @@
 /**
  * Copyright (C) 2015, Vadim Fedorov <vadim.fedorov@upf.edu>
  * Copyright (C) 2015, Gabriele Facciolo <facciolo@ens-cachan.fr>
- * Copyright (C) 2015, Pablo Arias <pablo.arias@upf.edu>
+ * Copyright (C) 2015, Pablo Arias <pablo.arias@cmla.ens-cachan.fr>
  *
  * This program is free software: you can use, modify and/or
  * redistribute it under the terms of the simplified BSD

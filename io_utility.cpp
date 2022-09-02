@@ -1,7 +1,7 @@
 /**
  * Copyright (C) 2015, Vadim Fedorov <vadim.fedorov@upf.edu>
  * Copyright (C) 2015, Gabriele Facciolo <facciolo@ens-cachan.fr>
- * Copyright (C) 2015, Pablo Arias <pablo.arias@upf.edu>
+ * Copyright (C) 2015, Pablo Arias <pablo.arias@cmla.ens-cachan.fr>
  *
  * This program is free software: you can use, modify and/or
  * redistribute it under the terms of the simplified BSD
@@ -147,9 +147,9 @@ Image<float> IOUtility::read_mono_image(const string &name)
 
 Image<float> IOUtility::read_rgb_image(const string &name)
 {
-	int width, height;
+	int width, height, channels;
 
-	float *image_data = iio_read_image_float_rgb(name.data(), &width, &height);
+	float *image_data = iio_read_image_float_vec(name.data(), &width, &height, &channels);
 
    if (! image_data) {
       fprintf(stderr, "read_rgb_image: cannot read %s\n", name.data());
@@ -161,10 +161,10 @@ Image<float> IOUtility::read_rgb_image(const string &name)
 	// copy from image_data to Image<float>
 	for (int y = 0; y < height; y++) {
 		for (int x = 0; x < width; x++) {
-			int index = 3 * (y * width + x);
+			int index = channels * (y * width + x);
 			image(x, y, 0) = image_data[index];
-			image(x, y, 1) = image_data[index + 1];
-			image(x, y, 2) = image_data[index + 2];
+			image(x, y, 1) = channels>1 ? image_data[index + 1]: image_data[index];
+			image(x, y, 2) = channels>2 ? image_data[index + 2]: image_data[index];
 		}
 	}
 

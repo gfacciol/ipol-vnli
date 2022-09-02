@@ -2,9 +2,9 @@ Variational Framework for Non-Local Inpainting
 ==============================================
 
 Vadim Fedorov, Gabriele Facciolo, and Pablo Arias
-<vadim.fedorov@upf.edu> , DTIC, Universitat Pompeu Fabra, Spain
+<vadim.fedorov@upf.edu>, DTIC, Universitat Pompeu Fabra, Spain
 <facciolo@ens-cachan.fr>, CMLA, ENS Cachan, France
-<pablo.arias@upf.edu>   , DTIC, Universitat Pompeu Fabra, Spain
+<pablo.arias@cmla.ens-cachan.fr>, CMLA, ENS Cachan, France
 
 Complete IPOL article available at: <FILL THIS>
 For future releases of the code visit: <FILL THIS>
@@ -42,7 +42,7 @@ Running the program without parameters prints its usage instructions:
        -conft     confidence decay time (5)
        -confa     confidence asymptotic value (0.1)
        -lambda    lambda (0.05)
-       -init      initialization type [black/avg/none] (black)
+       -init      initialization type [poisson/black/avg/none] (poisson)
        -psigma    Gaussian patch weights (10000)
        -showpyr   PREFIX write intermediate pyramid results
        -shownnf   FILENAME write illustration of the final NNF
@@ -124,3 +124,22 @@ Setup the components of the algorithm and launch the inpainting.
      // image of type Image, and mask of type Mask
      Image<float> output = image_inpainting.process(input, mask);
 
+
+
+Third party components
+======================
+
+This software uses the following 3rd party components:
+
+* 3rdparty/iio/ contains Enric Meinhardt's iio library for image input/output: 
+    https://github.com/mnhrdt/iio
+
+* 3rdparty/simpois/ contains simpois.c (and other files used by simpois.c) 
+  from Enric Meinhardt's image script collection:
+    https://github.com/mnhrdt/imscript
+
+  simpois.c provides a simpler Poisson solver which is used to compute the
+  initial condition in the coarsest scale.
+
+Both 3rdparty components are distributed under the terms of the BSD lincense,
+see 3rdparty/iio/LICENSE and 3rdparty/simpois/LICENSE. 
