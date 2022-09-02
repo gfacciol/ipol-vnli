@@ -10,5 +10,6 @@ COPY . .
 RUN cmake  -D IPOL_DEMO=1 .  &&  make -j 
 
 COPY .ipol/run.sh /workdir/bin
+COPY .ipol/merge_mask.py /workdir/bin
 
 WORKDIR /workdir/exec
